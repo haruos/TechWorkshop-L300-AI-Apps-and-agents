@@ -124,6 +124,7 @@ project_client = AIProjectClient(
     credential=DefaultAzureCredential(),
 )
 
+
 # LLM client for the handoff service.
 # Retrieves an AzureOpenAI client from the project client.
 # Handoff service determines which agent to route to based on intent classification.
