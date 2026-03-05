@@ -7,6 +7,7 @@ on:
     paths:
       - 'src/app/agents/customerLoyaltyAgent_initializer.py'
       - 'src/app/agents/agent_initializer.py'
+      - 'src/app/agents/agent_processor.py'
       - 'src/app/tools/discountLogic.py'
       - 'src/prompts/CustomerLoyaltyAgentPrompt.txt'
       - '.github/workflows/deploy-customer-loyalty-agent.yml'
@@ -15,6 +16,11 @@ on:
 permissions:
   id-token: write
   contents: read
+
+env:
+  AZURE_CLIENT_ID: b2e90928-751f-4b2e-ab20-944b7cc0bbd2
+  AZURE_TENANT_ID: 16b3c013-d300-468d-ac64-7eda0820b6d3
+  AZURE_SUBSCRIPTION_ID: 7b0cc825-1323-498e-952e-e34b3ec3b521
 
 jobs:
   deploy-agent:
@@ -42,11 +48,14 @@ jobs:
       - name: Login via Azure CLI (OIDC)
         uses: azure/login@v2.1.1
         with:
-          client-id: b2e90928-751f-4b2e-ab20-944b7cc0bbd2
-          tenant-id: 16b3c013-d300-468d-ac64-7eda0820b6d3
-          subscription-id: 7b0cc825-1323-498e-952e-e34b3ec3b521
+          client-id: ${{ env.AZURE_CLIENT_ID }}
+          tenant-id: ${{ env.AZURE_TENANT_ID }}
+          subscription-id: ${{ env.AZURE_SUBSCRIPTION_ID }}
 
       - name: Run customer loyalty agent initializer
+        env:
+          AZURE_CLIENT_ID: ${{ env.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ env.AZURE_TENANT_ID }}
         run: |
           cd src/
           python app/agents/customerLoyaltyAgent_initializer.py
