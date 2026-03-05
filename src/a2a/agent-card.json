@@ -1,0 +1,50 @@
+{
+    "additionalInterfaces": null,
+    "capabilities": {
+        "extensions": null,
+        "pushNotifications": null,
+        "stateTransitionHistory": null,
+        "streaming": true
+    },
+    "defaultInputModes": [
+        "text"
+    ],
+    "defaultOutputModes": [
+        "text"
+    ],
+    "description": "Zava Product Helper providing comprehensive product information and recommendations.",
+    "documentationUrl": null,
+    "iconUrl": null,
+    "name": "Zava Product Helper",
+    "preferredTransport": "JSONRPC",
+    "protocolVersion": "0.3.0",
+    "provider": null,
+    "security": null,
+    "securitySchemes": null,
+    "signatures": null,
+    "skills": [
+        {
+            "description": "Handles customer inquiries about Zava products, including features, pricing, and ranking products based on customer needs.",
+            "examples": [
+                "Which paint roller is best for smooth surfaces?",
+                "Sell me on the benefits of the Zava paint sprayer.",
+                "How many different types of paint brushes do you offer?",
+                "What are the three most popular colors of paint?"
+            ],
+            "id": "product_helper_sk",
+            "inputModes": null,
+            "name": "Zava Product Helper",
+            "outputModes": null,
+            "security": null,
+            "tags": [
+                "product",
+                "catalog",
+                "customer-support",
+                "agent-framework"
+            ]
+        }
+    ],
+    "supportsAuthenticatedExtendedCard": null,
+    "url": "http://0.0.0.0:8001/",
+    "version": "1.0.0"
+}
